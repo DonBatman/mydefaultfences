@@ -1,57 +1,52 @@
-local sticks = {
-		{"default:cobble","Cobble","cobble"},
-		{"default:stone","Stone","stone"},
-		{"default:desert_cobble","Desert Cobble","desert_cobble"},
-		{"default:desert_stone","Desert Stone","desert_stone"},
-		{"default:tree","Tree","tree"},
-		{"default:sandstone","Sandstone","sandstone"},
-		{"default:desert_sandstone","Desert Sandstone","desert_sandstone"},
-		{"default:gravel","Gravel","gravel"},
-		}
-for i in ipairs (sticks) do
-local wo = sticks[i][1]
-local des = sticks[i][2]
-local nam = sticks[i][3]
+local ceiling_lights = {   --color , Description , Image , Item
+	{ "white" , "White" , "default_snow" , "default:snowblock"},
+	{ "light_grey" , "Light Grey" , "default_steel_block" , "default:steel_ingot"},
+	{ "yellow" , "Yellow" ,  "default_gold_block" , "default:gold_ingot"},
+	{ "orange" , "Orange" ,  "default_bronze_block" , "default:bronze_ingot"},
+	{ "blue" , "Blue" , "default_diamond_block" , "default:diamond"},
+	{ "lava" , "Lava" , "default_lava" , "default:lava_source"},
+}
 
-minetest.register_node("mydfences:fence_"..nam, {
-	description = des.." Fence",
-	drawtype = "fencelike",
-	tiles = {"default_"..nam..".png"},
+for i in ipairs(ceiling_lights) do
+	local color = ceiling_lights[i][1]
+	local desc = ceiling_lights[i][2]
+	local img = ceiling_lights[i][3]
+	local item = ceiling_lights[i][4]
+
+minetest.register_node("mydefaultlights:ceiling_light_"..color, {
+	description = desc.."Ceiling light",
+	tiles = {img..".png"},
+	drawtype = "nodebox",
 	paramtype = "light",
-	is_ground_content = false,
-	selection_box = {
+	paramtype2 = "facedir",
+	light_source = 14,
+	groups = {snappy = 1, oddly_breakable_by_hand = 1},
+	node_box = {
 		type = "fixed",
-		fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
+		fixed = {
+			{-0.5, -0.375, -0.375, 0.5, -0.5, 0.375}, 
+			{-0.375, -0.375, -0.5, 0.375, -0.5, 0.5}, 
+		}
 	},
-	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=2},
-	sounds = default.node_sound_wood_defaults(),
+	on_place = minetest.rotate_node,
 })
---[[
+
 minetest.register_craft({
-	output = 'default:fence_wood 2',
-	recipe = {
-		{'', 'default:'..nam, ''},
-		{'', 'default:'..nam, ''},
-		{'', 'default:'..nam, ''},
-	}
+		output = 'mydefaultlights:ceiling_light_'..color..' 20',
+		recipe = {
+			{'', item, ''},
+			{item, 'default:torch', item},
+			{'', '', ''},
+		},
 })
-minetest.register_craft({
-	output = 'mydfences:fence_'..nam..' 2',
-	recipe = {
-		{st, st, st},
-		{st, st, st},
-	}
-})
-minetest.register_craft({
-	output = st..' 4',
-	recipe = {
-		{wo},
-	}
-})
-minetest.register_craftitem(st, {
-	description = des.." Stick",
-	inventory_image = "default_stick.png"..col,
-	groups = {stick=1},
-})
---]]
+
 end
+minetest.register_craft({
+		output = 'mydefaultlights:ceiling_light_lava 20',
+		recipe = {
+			{'', 'bucket:bucket_lava', ''},
+			{'bucket:bucket_lava', 'default:torch', 'bucket:bucket_lava'},
+			{'', '', ''},
+		},
+		replacements = {{"bucket:bucket_lava","bucket:bucket_empty 3"}},
+})
