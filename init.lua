@@ -15,7 +15,7 @@ local wo = sticks[i][1]
 local des = sticks[i][2]
 local nam = sticks[i][3]
 
-default.register_fence("mydfences:fence_" .. nam, {
+default.register_fence("mydefaultfences:fence_" .. nam, {
 	description = (des .. " Fence"),
 	texture = "default_"..nam..".png",
 	material = wo,
@@ -25,7 +25,7 @@ default.register_fence("mydfences:fence_" .. nam, {
 })
 
 minetest.register_craft({
-	output = 'mydfences:fence_'..nam..' 2',
+	output = 'mydefaultfences:fence_'..nam..' 2',
 	recipe = {
 		{'default:'..nam, 'default:stick', 'default:'..nam},
 		{'default:'..nam, 'default:stick', 'default:'..nam},
@@ -33,7 +33,7 @@ minetest.register_craft({
 	}
 })
 
-default.register_fence_rail("mydfences:fence_rail_"..nam, {
+default.register_fence_rail("mydefaultfences:fence_rail_"..nam, {
 	description = des..(" Fence Rail"),
 	texture = "default_"..nam..".png",
 	inventory_image = "default_fence_rail_overlay.png^default_"..nam..".png^" ..
@@ -46,7 +46,7 @@ default.register_fence_rail("mydfences:fence_rail_"..nam, {
 })
 
 minetest.register_craft({
-	output = 'mydfences:fence_rail_'..nam..' 2',
+	output = 'mydefaultfences:fence_rail_'..nam..' 2',
 	recipe = {
 		{'default:'..nam, 'default:'..nam, ''},
 		{'', '', ''},
@@ -54,7 +54,7 @@ minetest.register_craft({
 	}
 })
 
-doors.register_fencegate("mydfences:fencegate_" .. nam, {
+doors.register_fencegate("mydefaultfences:fencegate_" .. nam, {
 	description = (des .. " Fence Gate"),
 	texture = "default_"..nam..".png",
 	material = wo,
@@ -62,7 +62,7 @@ doors.register_fencegate("mydfences:fencegate_" .. nam, {
 })
 
 minetest.register_craft({
-	output = 'mydfences:fencegate_'..nam..' 2',
+	output = 'mydefaultfences:fencegate_'..nam..' 2',
 	recipe = {
 		{'default:stick', 'default:'..nam, 'default:stick'},
 		{'default:stick', 'default:'..nam, 'default:stick'},
