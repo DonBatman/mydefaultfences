@@ -15,26 +15,21 @@ local wo = sticks[i][1]
 local des = sticks[i][2]
 local nam = sticks[i][3]
 
-minetest.register_node("mydfences:fence_"..nam, {
-	description = des.." Fence",
-	drawtype = "fencelike",
-	tiles = {"default_"..nam..".png"},
-	paramtype = "light",
-	is_ground_content = false,
-	selection_box = {
-		type = "fixed",
-		fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
-	},
-	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=2},
+default.register_fence("mydfences:fence_" .. nam, {
+	description = (des .. " Fence"),
+	texture = "default_"..nam..".png",
+	material = wo,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
+	check_for_pole = true
 })
 
 minetest.register_craft({
 	output = 'mydfences:fence_'..nam..' 2',
 	recipe = {
-		{'', 'default:'..nam, ''},
-		{'', 'default:'..nam, ''},
-		{'', 'default:'..nam, ''},
+		{'default:'..nam, 'default:stick', 'default:'..nam},
+		{'default:'..nam, 'default:stick', 'default:'..nam},
+		{'', '', ''},
 	}
 })
 
@@ -50,4 +45,28 @@ default.register_fence_rail("mydfences:fence_rail_"..nam, {
 	sounds = default.node_sound_wood_defaults()
 })
 
+minetest.register_craft({
+	output = 'mydfences:fence_rail_'..nam..' 2',
+	recipe = {
+		{'default:'..nam, 'default:'..nam, ''},
+		{'', '', ''},
+		{'default:'..nam, 'default:'..nam, ''},
+	}
+})
+
+doors.register_fencegate("mydfences:fencegate_" .. nam, {
+	description = (des .. " Fence Gate"),
+	texture = "default_"..nam..".png",
+	material = wo,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
+})
+
+minetest.register_craft({
+	output = 'mydfences:fencegate_'..nam..' 2',
+	recipe = {
+		{'default:stick', 'default:'..nam, 'default:stick'},
+		{'default:stick', 'default:'..nam, 'default:stick'},
+		{'', '', ''},
+	}
+})
 end
