@@ -82,6 +82,8 @@ local ores = {
 		{"myores:slate","Slate","slate"},
 		{"myores:chromium","Chromium","chromium"},
 		{"myores:manganese","Manganese","manganese"},
+		{"myores:quartz", "Quartz","quartz"},
+		{"myores:chalcopyrite","Chalcopyrite","chalcopyrite"},
 		}
 	for i in ipairs (ores) do
 		local wo = ores[i][1]
