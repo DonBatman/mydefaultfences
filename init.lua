@@ -84,15 +84,14 @@ local ores = {
 		{"myores:manganese","Manganese","manganese"},
 		{"myores:quartz", "Quartz","quartz"},
 		{"myores:chalcopyrite","Chalcopyrite","chalcopyrite"},
-		{"myores:cobalt","Cobalt","cobalt"},
-		{"myores:uvarovite","Uvarovite","uvarovite"},
-		{"myores:selenite","Selenite","selenite"},
-		{"myores:miserite","Miserite","miserite"},
-		{"myores:limonite","Limonite","limonite"},
-		{"myores:sulfur","Sulfur","sulfur"},
-		{"myores:lapis_lazuli","Lapis Lazuli","lapis_lazuli"},
-		{"myores:emerald","Emerald","emerald"},
-		{"myores:amethyst","Amethyst","amethyst"},
+		{"myores:silver", "Silver", "silver"},
+		{"myores:cobalt", "Cobalt", "cobalt"},
+		{"myores:uvarovite", "Uvarovite", "uvarovite"},
+		{"myores:selenite", "Selenite", "selenite"},
+		{"myores:miserite", "Miserite", "miserite"},
+		{"myores:limonite", "Limonite", "limonite"},
+		{"myores:lapis_lazuli","Lapis Lazuli", "lapis_lazuli"},
+		{"myores:emerald", "Emerald", "emerald"},
 		}
 	for i in ipairs (ores) do
 		local wo = ores[i][1]
